@@ -14,22 +14,35 @@ const Login = () => {
     try {
       await login(username, password);
       navigate('/dashboard');
-    } catch (err) {
-      setError('Invalid credentials');
+    } catch {
+      setError('Invalid credentials. Please try again.');
     }
   };
 
   return (
-    <div className="col-md-4 mx-auto">
-      <h2>Login</h2>
-      {error && <div className="alert alert-danger">{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <input className="form-control mb-2" placeholder="Username"
-          value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input className="form-control mb-2" type="password" placeholder="Password"
-          value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button className="btn btn-primary w-100" type="submit">Login</button>
-      </form>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <h2>Stock Management</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <input
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            className="form-control"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button className="btn btn-primary w-100" type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };

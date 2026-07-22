@@ -14,19 +14,23 @@ const Products = () => {
   useEffect(() => { fetchProducts(); }, [search]);
 
   const handleDelete = async (id) => {
-    await deleteProduct(id);
-    fetchProducts();
+    if (window.confirm('Delete this product?')) {
+      await deleteProduct(id);
+      fetchProducts();
+    }
   };
 
   return (
     <div>
       <h2>Products</h2>
-      <input
-        className="form-control mb-3"
-        placeholder="Search products..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="page-toolbar">
+        <input
+          className="form-control"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <ProductTable products={products} onEdit={() => {}} onDelete={handleDelete} />
     </div>
   );
