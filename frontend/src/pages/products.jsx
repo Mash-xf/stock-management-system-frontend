@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts, deleteProduct } from '../api/products';
-import ProductTable from '../components/ProductTable';
+import { getProducts, deleteProduct } from '../api/product';
+import ProductTable from '../component/ProductTable';
 
 const Products = () => {
   const [products, setProducts] = useState([]);

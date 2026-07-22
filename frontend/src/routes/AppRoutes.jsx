@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from '../pages/Login';
-import Products from '../pages/Products';
-import Transactions from '../pages/Transactions';
-import Customers from '../pages/Customers';
-import Dashboard from '../pages/Dashboard';
+import Login from '../pages/login';
+import Products from '../pages/products';
+import Transactions from '../pages/transactions';
+import Customers from '../pages/customer';
+import Dashboard from '../pages/dashboard';
 
 const AppRoutes = () => (
   <Routes>

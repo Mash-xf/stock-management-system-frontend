@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api',
 });
 
-// Attach JWT access token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('access_token');
   if (token) {
@@ -23,7 +22,7 @@ api.interceptors.response.use(
       try {
         const refreshToken = localStorage.getItem('refresh_token');
         const { data } = await axios.post(
-          `${process.env.REACT_APP_API_BASE_URL}/auth/login/refresh/`,
+          `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api'}/auth/login/refresh/`,
           { refresh: refreshToken }
         );
         localStorage.setItem('access_token', data.access);
